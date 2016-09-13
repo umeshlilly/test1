@@ -32,14 +32,23 @@ This application is ready to use and comes with extra features. (ES6)
 **Folder Structure:**
 
 -bin :: *This folder contains the file which starts the node server [DO NOT CHANGE THIS FILE]*
+
 -lib :: *This folder contains the transpiled code from the `src` folder. [DO NOT CHANGE ANYTHING FROM THIS FOLDER]*
+
 -src :: *This folder contains all the server controllers, server routes and front end files as well*
+
 --controllers :: *This file contains all the server side controllers [TRY AND MAKE MODULAR CODE ]*
+
 --public :: *This folder contains all the front end scss javascript and images*
+
 ---scss :: *SASS files*
+
 ---img :: *All Images*
+
 ---js :: *All Client-Side JavaScript files. Browserify is ran on these files so you are able to write modular code*
+
 --routes :: *All the Express Routes belong in this file*
+
 -views :: *Contains all the handlebars views*
 
 ---
