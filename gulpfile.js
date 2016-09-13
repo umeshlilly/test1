@@ -6,6 +6,7 @@ const browserify = require('browserify');
 const babel = require('gulp-babel');
 const imagemin = require('gulp-imagemin');
 const sass = require('gulp-sass');
+const babelify = require('babelify');
 
 // This is the bebel task and trasnforms all my ES2016 back to ES5 so all browers can read
 gulp.task('babelify', () => {
@@ -18,11 +19,11 @@ gulp.task('babelify', () => {
 
 // This is the browserify task.
 gulp.task('browserify', () => {
-	return browserify('./lib/public/main.js')
+	return browserify('./lib/public/js/main.js')
 .transform('babelify')
 .bundle()
 .pipe(source('bundle.js')) // this is the output file name
-.pipe(gulp.dest('./lib/js/')); // and this is where it ends up
+.pipe(gulp.dest('./lib/public/js/')); // and this is where it ends up
 });
 
 // This is the imaging task.
@@ -43,7 +44,7 @@ gulp.task('watch', () => {
 	gulp.watch(['./src/**/*.js'], ['babelify']);
 	gulp.watch(['src/public/img/*'], ['image']);
 	gulp.watch(['./src/public/scss/*.scss'], ['sass']);
-	gulp.watch(['./lib/public/*.js'], ['browserify']);
+	gulp.watch(['./lib/public/js/*.js'], ['browserify']);
 });
 
 // Make my default task to watch both folders
