@@ -1,8 +1,12 @@
 {
-  "extends": 'airbnb',
-  "props": false,
-  "env": {
-    "browser": true,
-    "node": true,
-  },
+"extends": "airbnb",
+"rules": {
+     "no-console": 0,
+     "arrow-body-style": ["error", "always"],
+     "indent": ["error", "tab"],
+},
+"env": {
+ "browser": true,
+ "node": true,
+},
 }

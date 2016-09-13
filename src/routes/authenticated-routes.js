@@ -9,22 +9,18 @@ const AUTH_REQUIRED = (process.env.AUTH_REQUIRED === 'true');
 
 // middleware that is specific to this router
 router.use((req, res, next) => {
-  if (req.isAuthenticated() || !AUTH_REQUIRED) {
-    return next();
-  }
-  res.redirect(`/auth/forcedotcom?redirect=${req.originalUrl}`);
+	if (req.isAuthenticated() || !AUTH_REQUIRED) {
+		return next();
+	}
+	return res.redirect(`/auth/forcedotcom?redirect=${req.originalUrl}`);
 });
 
-function htmlExt(route) {
-  return `/${route}|${route}.html`;
-}
-
 router.get('/about', (req, res) => {
-  return res.render('about');
+	return res.render('about');
 });
 
 router.get('/', (req, res) => {
-  return res.render('index');
+	return res.render('index');
 });
 
 module.exports = router;
