@@ -35,6 +35,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'lib/public')));
+app.use('/bower_components', express.static(path.join(__dirname, '/bower_components')));
 
 // Load authenticated routes
 app.use('/', authenticatedRoutes);
