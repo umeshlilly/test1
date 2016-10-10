@@ -1,5 +1,4 @@
 // Routes in this module require authentication
-
 import express from 'express';
 
 const router = express.Router();
