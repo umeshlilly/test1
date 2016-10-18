@@ -7,6 +7,7 @@ const babel = require('gulp-babel');
 const imagemin = require('gulp-imagemin');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
+const mocha = require('gulp-mocha');
 
 // This is the bebel task and trasnforms all my ES2016 back to ES5 so all browers can read
 gulp.task('babelify', () => {
@@ -33,10 +34,18 @@ gulp.task('image', () => {
 .pipe(gulp.dest('lib/public/img/'));
 });
 
+// This task transforms SASS into CSS.
 gulp.task('sass', () => {
 	return gulp.src('./src/public/scss/*.scss')
 .pipe(sass().on('error', sass.logError))
 .pipe(gulp.dest('./lib/public/css'));
+});
+
+// This task runs unit testing from Mocha.
+gulp.task('mocha', () => {
+	gulp.src('tests/mocha.js', { read: false })
+// gulp-mocha needs filepaths so you can't have any plugins before it
+.pipe(mocha({ reporter: 'nyan' }));
 });
 
 gulp.task('lint', () => {
@@ -55,6 +64,7 @@ gulp.task('lint', () => {
 // lint error, return the stream and pipe to failAfterError last.
 .pipe(eslint.failAfterError());
 });
+
 
 // THIS IS MY DEFAULT TASK - Needs to watch both folder ([Folders / Files to Watch], [Gulp Task])
 gulp.task('watch', () => {

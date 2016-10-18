@@ -1,25 +1,27 @@
 {
-  "name": "ES6 Web Accelerator",
-  "description": "ES6 Web Accelator",
+  "name": "Cirrus Web Accelerator",
+  "description": "Cirrus Web Accelerator",
   "keywords": [
     "Node.JS",
     "JavaScript",
-    "ES6"
+    "ES6",
+    "Sass",
+    "Browersify"
   ],
   "website": "https://es6-web-accelerator.herokuapp.com/",
-  "repository": "https://github.com/EliLillyCo/ES6_WEB_ACCELERATOR",
+  "repository": "https://github.com/EliLillyCo/CIRR_WEB_ACCELERATOR_NEW",
   "success_url": "/",
   "scripts": {
-    "test-setup": "npm install",
-    "test": "gulp lint"
+    "test-setup": "",
+    "test": "npm test"
   },
   "env": {
-    "SECRET_TOKEN": {
-      "description": "A secret key for verifying the integrity of signed cookies.",
-      "generator": "secret"
+    "ExmapleOne": {
+      "description": "Description of the Enviroment Variable",
+      "required": "true"
     },
-    "WEB_CONCURRENCY": {
-      "description": "The number of processes to run.",
+    "ExmapleTwo": {
+      "description": "Description of the Enviroment Variable",
       "value": "5"
     }
   },
