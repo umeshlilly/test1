@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "test": "gulp lint && gulp mocha",
-    "start": "node --use_strict ./bin/www"
+    "start": "node --use_strict ./bin/www",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.14.0",
@@ -37,6 +39,8 @@
     "passport-forcedotcom": "^0.1.3",
     "redis": "^2.6.0-2",
     "serve-favicon": "~2.3.0",
-    "vinyl-source-stream": "^1.1.0"
-  }
+    "vinyl-source-stream": "^1.1.0",
+    "snyk": "^1.19.1"
+  },
+  "snyk": true
 }
