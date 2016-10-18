@@ -18,7 +18,7 @@
   "env": {
     "ExmapleOne": {
       "description": "Description of the Enviroment Variable",
-      "required": "true"
+      "value": "1"
     },
     "ExmapleTwo": {
       "description": "Description of the Enviroment Variable",
