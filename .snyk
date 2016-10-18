@@ -1,15 +1,19 @@
-version: v1.5.0
+version: v1.5.2
 ignore: {}
 patch:
   'npm:minimatch:20160620':
     - gulp > vinyl-fs > glob-stream > minimatch:
-        patched: '2016-10-18T16:55:37.946Z'
+        patched: '2016-10-18T17:00:20.886Z'
     - gulp > vinyl-fs > glob-stream > glob > minimatch:
-        patched: '2016-10-18T16:55:37.946Z'
+        patched: '2016-10-18T17:00:20.886Z'
     - gulp > vinyl-fs > glob-watcher > gaze > globule > minimatch:
         patched: '2016-10-18T16:55:37.946Z'
+      gulp > vinyl-fs > glob-watcher > gaze > globule > glob > minimatch:
+        patched: '2016-10-18T17:00:20.886Z'
     - gulp > vinyl-fs > glob-watcher > gaze > globule > glob > minimatch:
         patched: '2016-10-18T16:55:37.946Z'
+      gulp > vinyl-fs > glob-watcher > gaze > globule > minimatch:
+        patched: '2016-10-18T17:00:20.886Z'
     - gulp > vinyl-fs > glob-stream > minimatch:
         patched: '2016-10-18T16:58:02.526Z'
     - gulp > vinyl-fs > glob-stream > glob > minimatch:
