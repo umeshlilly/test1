@@ -18,11 +18,8 @@ app.use(bodyParser.urlencoded({
 	extended: false,
 }));
 
-// Configure the session middleware
-require('./lib/web/sessions')(app);
-
 // Configure authentication middle ware
-const auth = require('./lib/web/auth')(app);
+const auth = require('./lib/web/SSO')(app);
 
 auth.init();
 auth.registerRoutes();

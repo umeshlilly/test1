@@ -5,6 +5,7 @@
      "arrow-body-style": ["error", "always"],
      "indent": ["error", "tab"],
      "new-cap": ["error", { "properties": false }],
+     "no-param-reassign": ["error", { "props": false }],
 },
 "env": {
  "browser": true,
