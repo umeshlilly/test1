@@ -6,7 +6,7 @@
     "JavaScript",
     "ES6",
     "Sass",
-    "Browersify"
+    "Browersify",
   ],
   "website": "https://es6-web-accelerator.herokuapp.com/",
   "repository": "https://github.com/EliLillyCo/CIRR_WEB_ACCELERATOR_NEW",
@@ -16,13 +16,17 @@
     "test": "npm test"
   },
   "env": {
-    "ExmapleOne": {
-      "description": "Description of the Enviroment Variable",
-      "value": "1"
+    "NEW_RELIC_LICENSE_KEY": {
+      "description": "Licence Key for the New Relic Add-On. ()",
+      "required": "true"
     },
-    "ExmapleTwo": {
-      "description": "Description of the Enviroment Variable",
-      "value": "5"
+    "NEW_RELIC_LOG": {
+      "description": "The type of New Relic to monitor. ()",
+      "required": "true"
+    },
+    "PAPERTRAIL_API_TOKEN": {
+      "description": "API Token for Papertrail.",
+      "required": "true"
     }
   },
   "formation": {
@@ -32,7 +36,7 @@
     }
   },
   "image": "heroku/nodejs",
-  "addons": [],
+  "addons": ["newrelic", "papertrail"],
   "buildpacks": [
     {
       "url": "https://github.com/heroku/heroku-buildpack-nodejs"
