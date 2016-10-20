@@ -25,7 +25,7 @@
       "required": "true"
     },
     "PAPERTRAIL_API_TOKEN": {
-      "description": "API Token for Papertrail.",
+      "description": "API Token for Papertrail.()",
       "required": "true"
     }
   },
