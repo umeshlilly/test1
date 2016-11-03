@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -rf .codecheck
+git clone --depth 1 https://${GHACCESS}@github.com/EliLillyCo/CIRR_HerokuCI.git .codecheck
+.codecheck/runtests
+
