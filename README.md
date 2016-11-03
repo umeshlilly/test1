@@ -1,5 +1,7 @@
 # Cirrus Web Accelerator
 
+hello world
+
 **Application Name:** Node JS Web Accelerator.
 
 **Application Description:** A simple Node Accelerator, allowing developers / projects to have a starting point when
