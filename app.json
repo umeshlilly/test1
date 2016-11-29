@@ -15,17 +15,7 @@
     "test-setup": "",
     "test": "npm test"
   },
-  "env": {
-    "NEW_RELIC_LICENSE_KEY": {
-      "description": "Licence Key for the New Relic Add-On. ()"
-    },
-    "NEW_RELIC_LOG": {
-      "description": "The type of New Relic to monitor. ()"
-    },
-    "PAPERTRAIL_API_TOKEN": {
-      "description": "API Token for Papertrail.()"
-    }
-  },
+  "env": {},
   "formation": {
     "web": {
       "quantity": "2",

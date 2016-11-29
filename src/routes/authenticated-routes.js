@@ -1,6 +1,9 @@
 // Routes in this module require authentication
 import express from 'express';
 
+// Importing the server side modules.
+import testFile from '../controllers/test.js';
+
 const router = express.Router();
 
 // Controls whether this web app will require authentication and authorization.
@@ -15,11 +18,16 @@ router.use((req, res, next) => {
 });
 
 router.get('/about', (req, res) => {
-	return res.render('about');
+	testFile.test().then((data) => {
+		return res.render('about', {
+			title: data,
+		});
+	}).catch((e) => {
+		res.status(500, {
+			error: e,
+		});
+	});
 });
 
-router.get('/', (req, res) => {
-	return res.render('index');
-});
 
 module.exports = router;
