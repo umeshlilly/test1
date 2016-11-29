@@ -17,16 +17,13 @@
   },
   "env": {
     "NEW_RELIC_LICENSE_KEY": {
-      "description": "Licence Key for the New Relic Add-On. ()",
-      "required": "true"
+      "description": "Licence Key for the New Relic Add-On. ()"
     },
     "NEW_RELIC_LOG": {
-      "description": "The type of New Relic to monitor. ()",
-      "required": "true"
+      "description": "The type of New Relic to monitor. ()"
     },
     "PAPERTRAIL_API_TOKEN": {
-      "description": "API Token for Papertrail.()",
-      "required": "true"
+      "description": "API Token for Papertrail.()"
     }
   },
   "formation": {
