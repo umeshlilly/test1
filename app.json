@@ -13,7 +13,7 @@
   "success_url": "/",
   "scripts": {
     "test-setup": "",
-    "test": "npm test"
+    "test": "./codecheck"
   },
   "env": {},
   "formation": {
