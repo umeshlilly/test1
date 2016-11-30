@@ -9,6 +9,7 @@ const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 
+
 // This is the bebel task and trasnforms all my ES2016 back to ES5 so all browers can read
 gulp.task('babelify', () => {
 	return gulp.src('src/**/**/*.js')
