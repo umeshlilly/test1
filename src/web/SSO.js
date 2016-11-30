@@ -8,7 +8,7 @@ const AUTH_REQUIRED = (process.env.AUTH_REQUIRED);
 
 module.exports = (app) => {
 	return {
-/* initialize the user by logging them in through Force */
+/* initialize the user by logging them in through Force dfwewfbeiufgewiufgewiufgewufwefoewgfowufgfw */
 		init() {
 			passport.serializeUser((user, done) => {
 				done(null, user);
