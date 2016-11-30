@@ -30,7 +30,7 @@ file. This file shouldn't be changed unless your code *has* a feature / framewor
 1. Clone the Repo.
 2. Run `npm install` to install all the node modules locally
 3. Open up another tab in your terminal or command line. In one terminal / command line run `gulp`. This will start your task runners.
-3. Rename the .envsample
+3. Rename the .envsample to .env and add your needed enviroment variables.
 4. In your other tab run `heroku local` (if using heroku) or `npm start` to start your server.
 5. Go to localhost on port 5000 and your sever should be running there.
 
