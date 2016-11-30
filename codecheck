@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rm -rf .codecheck
-git clone --depth 1 https://lillyherokuciint:42044a03dc7f4689302f5fa359faf5d582a626b8@github.com/EliLillyCo/CIRR_HerokuCI.git .codecheck
+git clone --depth 1 https://${GHACCESS}@github.com/EliLillyCo/CIRR_HerokuCI.git .codecheck
 .codecheck/runtests
