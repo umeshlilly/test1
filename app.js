@@ -8,6 +8,8 @@ const authenticatedRoutes = require('./lib/routes/authenticated-routes');
 
 const app = express();
 
+console.log('Hello World');
+
 require('dotenv').config();
 
 // uncomment after placing your favicon in /public
