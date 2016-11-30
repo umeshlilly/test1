@@ -15,20 +15,7 @@
     "test-setup": "",
     "test": "./codecheck"
   },
-  "env": {
-    "NEW_RELIC_LICENSE_KEY": {
-      "description": "Licence Key for the New Relic Add-On. ()",
-      "required": "true"
-    },
-    "NEW_RELIC_LOG": {
-      "description": "The type of New Relic to monitor. ()",
-      "required": "true"
-    },
-    "PAPERTRAIL_API_TOKEN": {
-      "description": "API Token for Papertrail.()",
-      "required": "true"
-    }
-  },
+  "env": {},
   "formation": {
     "web": {
       "quantity": "2",
