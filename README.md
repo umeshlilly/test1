@@ -20,8 +20,16 @@ Material Design, Developer Standards (Eslint) and Mocha.
 
 **Development Add-Ons:** New Relic APM
 
-**Development Standards:** This Accelerator comes with Developer Standards. These standards can be found in the `eslint.rc`
+**Development Standards:** This Accelerator comes with Developer Standards. These standards can be found in the `.eslintrc`
 file. This file shouldn't be changed unless your code *has* a feature / framework that isn't included in the file.
+
+------------------------------
+
+**Prerequisite:**
+
+1. Download [Redis](https://redis.io/download). In the downloaded directory, in a terminal type `make`. Then `make test`. You have now downloaded and installed Red is successfully.
+2. Download Eslint. This depends on what IDE you use: [Atom](https://atom.io/packages/linter-eslint), [Subime](http://sublimelinter.readthedocs.io/en/latest/installation.html). Once these are downloaded make sure they are turned on.
+
 
 ------------------------------
 
