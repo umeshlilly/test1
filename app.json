@@ -13,7 +13,7 @@
   "success_url": "/",
   "scripts": {
     "test-setup": "",
-    "test": "./codecheck && gulp lint && gulp mocha"
+    "test": "npm test"
   },
   "env": {},
   "formation": {

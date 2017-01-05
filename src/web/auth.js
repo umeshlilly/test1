@@ -15,7 +15,7 @@ module.exports = function auth(app) {
         done(null, obj);
       });
 
-// Use the ForceDotComStrategy within Passport
+      // Use the ForceDotComStrategy within Passport
       const sfStrategy = new ForceDotComStrategy({
         clientID: process.env.CF_CLIENT_ID,
         clientSecret: process.env.CF_CLIENT_SECRET,
@@ -24,7 +24,7 @@ module.exports = function auth(app) {
         tokenURL: process.env.SF_TOKEN_URL,
         profileFields: ['user_id', 'first_name'],
       }, (accessToken, refreshToken, profile, done) => {
-// Only retain the profile properties we need.
+        // Only retain the profile properties we need.
         profile.user_id = profile._raw.user_id;
         delete profile._raw;
         delete profile.displayName;
@@ -77,10 +77,8 @@ module.exports = function auth(app) {
     ensureAuthenticated: function ensureAuthenticated(req, res, next) {
       // If the user is already authenticated or AUTH is not required - skip
       if (req.isAuthenticated() || AUTH_REQUIRED === 'false') {
-        console.log('bob');
         return next();
       }
-      console.log('This must be printing');
       return res.redirect(`/auth/forcedotcom?redirect=${req.originalUrl}`);
     },
   };
