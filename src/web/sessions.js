@@ -3,17 +3,21 @@ const RedisStore = require('connect-redis')(session);
 const redis = require('redis');
 
 let client;
-// Depending what enviroment the user is in depends on what REDIS is being used
-if (process.env.NODE_ENV === 'development') {
+
+/* Depending what enviroment the user is in depends on what REDIS is being used.
+   As Redis is only be used for AUTH, AUTH has to be set to true*/
+if (process.env.NODE_ENV === 'development' && process.env.AUTH_REQUIRED === 'true') {
   client = redis.createClient(process.env.LOCAL_REDIS_URL);
-} else {
+} else if (process.env.AUTH_REQUIRED === 'true') {
   client = redis.createClient(process.env.REDIS_URL);
 }
 
 // If there is an error wrong with the client print it out.
-client.on('error', (err) => {
-  console.log(`Redis${err}`);
-});
+if (process.env.AUTH_REQUIRED === 'true') {
+  client.on('error', (err) => {
+    console.log(`Redis${err}`);
+  });
+}
 
 
 // Passport does not directly manage your session, it only uses the session.
