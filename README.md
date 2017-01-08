@@ -67,7 +67,7 @@ This project uses a salesforce connected application for authentication. You wil
 3. `CF_CLIENT_ID`
 4. `CF_CLIENT_SECRET`
 
-When `AUTH_REQUIRED` is set to **false** you do not need to put any values in the other three variables. However, this means your application has no Lilly Auth; meaning anyone can access your application.
+When `AUTH_REQUIRED` is set to **false** your application is going to have no authentication. **NOTE:** Please make sure that even if your application has no auth; to put some calues in the `CF_CLIENT_ID` and `CF_CLIENT_SECRET` fields. As this is needed for the application to run.
 
 When you set `AUTH_REQUIRED` to **true** your application is going to try and authenticate against a force.com connected application. You will need to raise a Service Request in Service Now to obtain the `CF_CLIENT_ID` and `CF_CLIENT_SECRET` needed for this authentication. The `CF_CALLBACK_URL` will be dependent on your application's URL. When you submit the Service Request you will need to provide this value(s). If your authenticating multiple applications E.G a pipeline full of applications. Please provide multiple `CF_CALLBACK_URL` values. E.G
 
