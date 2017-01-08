@@ -6,8 +6,8 @@ to the name and the amount of times it appears.
 The output would be ['Nick', 'Bob'] [2, 1]. */
   order: (arr) => {
     const a = [];
-    const	b = [];
-    let	prev;
+    const b = [];
+    let prev;
 
     arr.sort();
     for (let i = 0; i < arr.length; i++) {
