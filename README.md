@@ -33,6 +33,10 @@
 1. Run `npm run build` in one terminal window.
 2. Run either `npm start` or `heroku local` in another terminal window.
 
+For more information on how the Web Accelerator works, as well as what technologies and frameworks are being used, please see this repository's [Wiki](https://github.com/EliLillyCo/CIRR_WEB_ACCELERATOR/wiki).
+
+If you find any bugs or Issues with this web accelerator and you cannot find the answer in this README or the [Wiki](https://github.com/EliLillyCo/CIRR_WEB_ACCELERATOR/wiki) please log an [Issue](https://github.com/EliLillyCo/CIRR_WEB_ACCELERATOR/issues).
+
 ---
 
 **Deploying to Heroku:**
