@@ -1,32 +1,57 @@
 {
-  "name": "Cirrus Web Accelerator",
+  "name": "CIRR_WEB_ACCELERATOR",
   "description": "Cirrus Web Accelerator",
-  "keywords": [
-    "Node.JS",
-    "JavaScript",
-    "ES6",
-    "Sass",
-    "Browersify"
-  ],
-  "website": "https://es6-web-accelerator.herokuapp.com/",
-  "repository": "https://github.com/EliLillyCo/CIRR_WEB_ACCELERATOR_NEW",
-  "success_url": "/",
   "scripts": {
-    "test-setup": "",
-    "test": "npm test"
   },
-  "env": {},
+  "env": {
+    "AUTH_REQUIRED": "false",
+    "CF_CALLBACK_URL": {
+      "required": true
+    },
+    "CF_CLIENT_ID": {
+      "required": true
+    },
+    "CF_CLIENT_SECRET": {
+      "required": true
+    },
+    "COOKIE_SECRET": {
+      "required": true
+    },
+    "LOG_LEVEL": {
+      "required": true
+    },
+    "NEW_RELIC_LICENSE_KEY": {
+      "required": true
+    },
+    "NEW_RELIC_LOG": {
+      "required": true
+    },
+    "PAPERTRAIL_API_TOKEN": {
+      "required": true
+    },
+    "REDIS_URL": {
+      "required": true
+    },
+    "SF_AUTHORIZE_URL": {
+      "required": true
+    },
+    "SF_TOKEN_URL": {
+      "required": true
+    },
+    "NODE_ENV": {
+      "required": true
+    },
+  },
   "formation": {
-    "web": {
-      "quantity": "2",
-      "size": "Performance-M"
-    }
   },
-  "image": "heroku/nodejs",
-  "addons": ["newrelic", "papertrail"],
+  "addons": [
+    "newrelic",
+    "papertrail",
+    "heroku-redis"
+  ],
   "buildpacks": [
     {
-      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+      "url": "heroku/nodejs"
     }
   ]
 }

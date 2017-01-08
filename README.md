@@ -1,12 +1,10 @@
-# Cirrus Web Accelerator
+# Cirrus Web Accelerator v2.0.0
 
-**Application Name:** Node JS Web Accelerator.
+**Application Name:** Cirrus Web Accelerator
 
-**Application Description:** A simple Node Accelerator, allowing developers / projects to have a starting point when
-creating a Node application. Comes with modern and the latest developer features such as: ES6, Gulp, Browserify, Sass,
-Material Design, Developer Standards (Eslint) and Mocha.
+**Application Description:** This is a Node Web Accelerator that allows project teams to get up and running with a Node project quicker then starting from scratch.
 
-**Prefix:** CIRR_Web_Accelerator.
+**Prefix:** CIRR_WEB_ACCELERATOR
 
 **Author:** Nick Liffen
 
@@ -14,72 +12,103 @@ Material Design, Developer Standards (Eslint) and Mocha.
 
 **Information Classification:** Green
 
-**Development Languages:** JavaScript (Node JS).
+**Development Language:** Node
 
-**Development Framework(s):** Mocha, Sass, Browserify,
+**Development Add-Ons:** Heroku Redis, New Relic APM, Papertrail
 
-**Development Add-Ons:** New Relic APM
+**ALM Record URL:** N/A
 
-**Development Standards:** This Accelerator comes with Developer Standards. These standards can be found in the `.eslintrc`
-file. This file shouldn't be changed unless your code *has* a feature / framework that isn't included in the file.
+---
 
-------------------------------
+**Install:**
 
-**Prerequisite:**
+1. Run `npm install`.
+2. Run `npm install -g eslint`
+3. Copy the `.env-sample` file to `.env` and add details.
 
-1. Download [Redis](https://redis.io/download). In the downloaded directory, in a terminal type `make`. Then `make test`. You have now downloaded and installed Red is successfully.
-2. Download Eslint. This depends on what IDE you use: [Atom](https://atom.io/packages/linter-eslint), [Subime](http://sublimelinter.readthedocs.io/en/latest/installation.html). Once these are downloaded make sure they are turned on.
+---
 
+**Running:**
 
-------------------------------
+1. Run `npm run build` in one terminal window.
+2. Run either `npm start` or `heroku local` in another terminal window.
 
-**Get Started:**
+---
 
-1. Clone the Repo.
-2. Run `npm install` to install all the node modules locally
-3. Open up another tab in your terminal or command line. In one terminal / command line run `gulp`. This will start your task runners.
-3. Rename the .envsample to .env and add your needed enviroment variables.
-4. In your other tab run `heroku local` (if using heroku) or `npm start` to start your server.
-5. Go to localhost on port 5000 and your sever should be running there.
+**Deploying to Heroku:**
 
-------------------------------
+1. Create your application(s) / pipelines in Heroku following the [Cirrus Best Practise](https://lillydev.com) if needed.
+2. Ensure you attach three add-ons to your application(s): Redis, Papertail and New Relic. You will notice that it will have automatically added the following environment variables to your application(s):
+  1. `LOG_LEVEL`.
+  2. `NEW_RELIC_LICENSE_KEY`.
+  3. `NEW_RELIC_LOG`.
+  4. `PAPERTRAIL_API_TOKEN`.
+  5. `REDIS_URL`.
+Please copy these values to your local `.env` file.
+3. Ensure your add the other environment variables found in the `.env-sample` file to your Heroku Applications. You **do not** need to add the `HTTP_PROXY` to the Heroku environment variables; this is only for local development. The other environment variables you would upload to Heroku are:
+  1. `AUTH_REQUIRED`.
+  2. `CF_CALLBACK_URL`.
+  3. `CF_CLIENT_ID`.
+  4. `CF_CLIENT_SECRET`.
+  5. `COOKIE_SECRET`.
+  6. `SF_AUTHORIZE_URL`.
+  7. `SF_TOKEN_URL`.
+  8. `NODE_ENV` needs to be set to **production** in Heroku.
+5. Push your code to GitHub and watch your Heroku application automatically deploy.
+
+---
 
 **Authentication:**
 
-This application comes with Single Sign On (Using Salesforce Authentication). In your .env file there is a Environment Variable called `AUTH`. If you set this to `false` authentication will be skipped. If set to `true` it will authenticated with Force. If set to `true` you will need to do the following steps:
+This project uses a salesforce connected application for authentication. You will notice in the `.env-sample` file four variables:
 
-1. Make a Change Request to create a Connected Application.
-2. You will need to include the following details: *Callback URL* and *Start URL*.
-3. You will get a Client Secret and Token. Put these in your .env file and it should authenticate.
+1. `AUTH_REQUIRED`
+2. `CF_CALLBACK_URL`
+3. `CF_CLIENT_ID`
+4. `CF_CLIENT_SECRET`
 
-------------------------------
+When `AUTH_REQUIRED` is set to **false** you do not need to put any values in the other three variables. However, this means your application has no Lilly Auth; meaning anyone can access your application.
 
+When you set `AUTH_REQUIRED` to **true** your application is going to try and authenticate against a force.com connected application. You will need to raise a Service Request in Service Now to obtain the `CF_CLIENT_ID` and `CF_CLIENT_SECRET` needed for this authentication. The `CF_CALLBACK_URL` will be dependent on your application's URL. When you submit the Service Request you will need to provide this value(s). If your authenticating multiple applications E.G a pipeline full of applications. Please provide multiple `CF_CALLBACK_URL` values. E.G
 
-**Folder Structure:**
+1. https://es6-web-accelerator-dev.herokuapp.com/auth/forcedotcom/callback
+2. https://es6-web-accelerator-stg.herokuapp.com/auth/forcedotcom/callback
+3. https://es6-web-accelerator.herokuapp.com/auth/forcedotcom/callback
 
-**-bin** :: *This folder contains the file which starts the node server [DO NOT CHANGE THIS FILE]*
+This request can take up to 5 working days to complete; so please make the request early.
 
-**-lib** :: *This folder contains the transpiled code from the `src` folder. [DO NOT CHANGE ANYTHING FROM THIS FOLDER]*
+---
 
-**-src** :: *This folder contains all the server controllers, server routes and front end files as well*
+**Coding Standards:**
 
-**--controllers** :: *This file contains all the server side controllers [TRY AND MAKE MODULAR CODE ]*
+1. Make sure you have Eslint downloaded and installed on your IDE.
+    1. Atom: [Linter](https://atom.io/packages/linter), [ESLint](https://atom.io/packages/linter-eslint)
+    2. Sublime: [Linter](https://packagecontrol.io/packages/SublimeLinter), [ESlint](https://packagecontrol.io/packages/SublimeLinter-contrib-eslint)
+    3. Other IDE's: [Linter](http://eslint.org)
+2. Make sure you have EditorConfig downloaded and installed on your IDE:
+    1. Atom: [EditorConfig](https://github.com/sindresorhus/atom-editorconfig#readme)
+    2. Sublime: [EditorConfig](https://github.com/sindresorhus/editorconfig-sublime#readme)
+    3. Other IDE's: [EditorConfig](http://editorconfig.org)
 
-**--public** :: *This folder contains all the front end scss javascript and images*
+This project uses ESlint for JavaScript Coding Standards. The AirBnb Style Guide is used for this project. Please ensure that all code passes the coding checks before pushing code. Run `npm run lint` to find out if your code has passed or not.
 
-**---scss** :: *SASS files*
+This project also uses [EditorConfig](http://editorconfig.org) to set up our coding style across IDE's.
 
-**---img** :: *All Images*
+---
 
-**---js** :: *All Client-Side JavaScript files. Browserify is ran on these files so you are able to write modular code*
+**Contributing:**
 
-**--routes** :: *All the Express Routes belong in this file*
+1. Clone the repository.
+2. Read this README file.
+3. Make some changes.
+4. Once you're done with your changes send a pull request into the *develop* branch. (see naming details below).
+5. Heroku will create a review application.
+6. In the Pull Request, open the Review Application and make sure your changes are present and working.
+7. Make sure Continuous Integration has passed (Green tick in Pull Request).
+8. Wait for feedback.
 
-**-views** :: *Contains all the handlebars views*
+When you open a pull request please follow these naming conventions:
 
-------------------------------
-
-**Import features:**
-
-1. SASS is an ability to write *better* CSS. It allows you to write SCSS code. However, you DO NOT HAVE TO, you are able to write normal CSS within a SCSS file. Meaning if you don't know SASS you can write normal CSS and it will work.
-2. Browserify is an ability to write modular code front end. In the src/public/js file try and write modular code. However you don't have to - you can just write Javascript like you normally would and that would be fine. At the bottom of any handlebars file remember to include bundle.js
+1. `feature/featureName`
+2. `enhancement/enhancementName`
+3. `bug/bugName`
