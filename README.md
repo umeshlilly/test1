@@ -62,6 +62,26 @@ Please copy these values to your local `.env` file.
 
 ---
 
+**Heroku Continuous Integration:**
+
+This repository comes with all the files needed to run Heroku Continuous Integration (CI). Please enable Heroku CI in your pipeline. Please then add **two** values to the environment variables:
+
+
+|       Key       | Value                                    |
+|:---------------:|------------------------------------------|
+| API_TOKEN       | 3c28f545fa4a9374585cda369b7d783fa5763c95 |
+| GITHUB_USERNAME | lillyherokuciint                         |
+
+The tests that this will run is:
+
+1. Security Checks (Static Source Code Analysis)(Checkmark).
+2. Coding Standards Checks (AirBnB Style Guide)(ESlint).
+3. Unit Testing Checks (Mocha)
+
+More information can be found [here](https://lillydev.com/heroku/ci)).
+
+---
+
 **Authentication:**
 
 This project uses a salesforce connected application for authentication. You will notice in the `.env-sample` file four variables:
