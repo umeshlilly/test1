@@ -2,7 +2,7 @@
 import express from 'express';
 
 // Importing the server side modules.
-import testFile from '../controllers/test';
+import testFile from '../server-controllers/test';
 
 const router = express.Router();
 

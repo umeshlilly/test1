@@ -2,5 +2,5 @@
 
 # Script to run codecheck
 rm -rf .codecheck
-git clone --depth 1 https://lillyherokuciint:0fc8464c5687f89d22a9c0ec252dab6751bb6a79@github.com/EliLillyCo/CIRR_HerokuCI.git .codecheck
+git clone --depth 1 https://${GITHUB_USERNAME}:${API_TOKEN}@github.com/EliLillyCo/CIRR_HerokuCI.git .codecheck
 .codecheck/runtests
