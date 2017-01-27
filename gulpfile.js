@@ -1,3 +1,5 @@
+/* GULP TASKS */
+
 /* These are the required packages needed to carry out the Gulp Task Below. */
 const gulp = require('gulp');
 const source = require('vinyl-source-stream');
@@ -11,38 +13,81 @@ const uglify = require('gulp-uglify');
 const cleanCSS = require('gulp-clean-css');
 const pump = require('pump');
 
+/*  -----------------------  */
 
-// This is the bebel task and trasnforms all my ES2016 back to ES5 so all browers can read
-gulp.task('babelify', () => {
-  return gulp.src('src/**/**/*.js').pipe(babel({
+/* BABEL TASKS  */
+
+
+/*  These compily the server controllers from ES6 to ES5 and puts the relevant
+    files in the lib/server-controllers/ */
+gulp.task('babelify-server-controllers', () => {
+  return gulp.src('src/server-controllers/**/*.js').pipe(babel({
     presets: ['es2015'],
-  })).pipe(gulp.dest('lib'));
+  })).pipe(gulp.dest('lib/server-controllers/'));
 });
 
-// This is the browserify task.
+/*  These compily the routes from ES6 to ES5 and puts the relevant
+    files in the lib/routes/ */
+gulp.task('babelify-routes', () => {
+  return gulp.src('src/routes/**/*.js').pipe(babel({
+    presets: ['es2015'],
+  })).pipe(gulp.dest('lib/routes/'));
+});
+
+/*  These compily the web files from ES6 to ES5 and puts the relevant
+    files in the lib/web/ */
+gulp.task('babelify-web', () => {
+  return gulp.src('src/web/**/*.js').pipe(babel({
+    presets: ['es2015'],
+  })).pipe(gulp.dest('lib/web/'));
+});
+
+
+/*  -----------------------  */
+
+/* BROWSERIFY TASKS  */
+
+/*  Browserify turns front end modules into a single bundle.js. It reads the ES6
+    files found in the src directory and then outputs the bundle.js file to
+    public/js to in the lib be rendered on the browser. */
 gulp.task('browserify', () => {
-  return browserify('./lib/public/js/main.js')
+  return browserify('src/client-controllers/main.js')
         .transform('babelify')
         .bundle()
         .pipe(source('bundle.js')) // this is the output file name
         .pipe(gulp.dest('./lib/public/js/')); // and this is where it ends up
 });
 
-// This is the imaging task.
+/*  -----------------------  */
+
+/* IMAGE COMPRESSION TASKS  */
+
+/*  This taks compresses all images from the src directory into the lib directory.
+    If no compression is possible it simply copies the file from src to lib.*/
 gulp.task('image', () => {
   return gulp.src('./src/public/img/*')
         .pipe(imagemin())
         .pipe(gulp.dest('lib/public/img/'));
 });
 
-// This task transforms SASS into CSS.
+/*  -----------------------  */
+
+/* SASS TASKS  */
+
+/*  This task complies SASS to CSS and ouputs the single .css file into the lib
+    directory.*/
 gulp.task('sass', () => {
   return gulp.src('./src/public/scss/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./lib/public/css'));
 });
 
-// This task runs unit testing from Mocha.
+/*  -----------------------  */
+
+/* MOCHA UNIT TEST TASKS  */
+
+/*  Unit Testing comes as default for this codebase. Mocha is used to run the Unit
+    Tests, this test is being called from 'npm test' */
 gulp.task('mocha', () => {
   gulp.src('tests/mocha.js', {
     read: false,
@@ -51,14 +96,24 @@ gulp.task('mocha', () => {
   }));
 });
 
-// This task runs the standards check agsinst the `.eslintrc` file in the root directory.
+/*  -----------------------  */
+
+/* ESLINT TEST TASK */
+
+/*  This task runs the linting task and makes sure the code matches the standards
+    found in the .eslintrc file, this test is being called from 'npm test' */
 gulp.task('lint', () => {
   return gulp.src(['**/*.js', '!node_modules/**', '!lib/**', '!src/public/js/bundle.js', '!src/public/vendor/**'])
         .pipe(eslint()).pipe(eslint.format()).pipe(eslint.failAfterError());
 });
 
-// This task compresses vendor javascript code.
-gulp.task('minify-js', () => {
+/*  -----------------------  */
+
+/* Minify Tasks TASK */
+
+/*  The purpose of this task is to minify any vendor JavaScript code that the
+    project uses. */
+gulp.task('minify-js-vendor', () => {
   pump([
     gulp.src('src/public/vendor/*.js'),
     uglify(),
@@ -66,8 +121,8 @@ gulp.task('minify-js', () => {
   ]);
 });
 
-// This task compresses vendor css code.
-gulp.task('minify-css', () => {
+/*  The purpose of this task is to minify CSS code that the project uses. */
+gulp.task('minify-css-vendor', () => {
   return gulp.src('src/public/vendor/*.css')
         .pipe(cleanCSS({
           compatibility: 'ie8',
@@ -75,16 +130,40 @@ gulp.task('minify-css', () => {
         .pipe(gulp.dest('lib/public/vendor'));
 });
 
+/*  The purpose of this task is to minify any user-built JavaScript code that the
+    project uses. */
+gulp.task('minify-js', () => {
+  pump([
+    gulp.src('src/public/js/*.js'),
+    uglify(),
+    gulp.dest('lib/public/js'),
+  ]);
+});
 
-// THIS IS THE DEFAULT TASK - Needs to watch both folder ([Folders / Files to Watch], [Gulp Task])
+
+/*  -----------------------  */
+
+/* DEFAULT TASK */
+
+/*  This is the default task and watches any folder / file which changes.
+    The structure goes: ([Folders / Files to Watch], [Gulp Task]) */
 gulp.task('watch', () => {
-  gulp.watch(['./src/controllers/*.js'], ['babelify']);
+  gulp.watch(['./src/server-controllers/*.js'], ['babelify-server-controllers']);
+  gulp.watch(['./src/routes/*.js'], ['babelify-routes']);
+  gulp.watch(['./src/web/*.js'], ['babelify-web']);
   gulp.watch(['./src/public/img/*'], ['image']);
   gulp.watch(['./src/public/scss/*.scss'], ['sass']);
-  gulp.watch(['./lib/public/js/*.js'], ['browserify']);
-  gulp.watch(['./src/public/vendor/*.js'], ['minify-js']);
-  gulp.watch(['./src/public/vendor/*.css'], ['minify-css']);
+  gulp.watch(['./src/client-controllers/*.js'], ['browserify']);
+  gulp.watch(['./src/public/vendor/*.js'], ['minify-js-vendor']);
+  gulp.watch(['./src/public/js/*.js'], ['minify-js-vendor']);
+  gulp.watch(['./src/public/vendor/*.css'], ['minify-css-vendor']);
 });
+
+/*  -----------------------  */
+
+/* START TASK */
 
 // Make my default task to watch both folders
 gulp.task('default', ['watch']);
+
+/*  -----------------------  */
