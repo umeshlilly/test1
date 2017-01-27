@@ -15,7 +15,14 @@
   "scripts": {
     "test": "npm test"
   },
-  "env": {},
+  "env": {
+    "API_TOKEN": {
+      "required": true
+    },
+    "GITHUB_USERNAME": {
+      "required": true
+    },
+  },
   "formation": {
     "web": {
       "quantity": "2",
